@@ -22,4 +22,10 @@ public class ProductController
 
         return "frontpage";
     }
+
+    @GetMapping("/product")
+    public String product()
+    {
+        return "product";
+    }
 }

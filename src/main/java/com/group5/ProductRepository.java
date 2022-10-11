@@ -31,12 +31,13 @@ public class ProductRepository
                                         rs.getString("category"),
                                         rs.getString("image")));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return products;
     }
+
+    // todo: metod för att hämta en product
 
     // todo: metod för att spara produkter
 }
