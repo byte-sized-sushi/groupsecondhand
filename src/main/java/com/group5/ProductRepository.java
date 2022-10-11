@@ -22,13 +22,14 @@ public class ProductRepository
         List<Product> products = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT id, name, price, category FROM product")) {
+             ResultSet rs = stmt.executeQuery("SELECT id, name, price, category, image FROM product")) {
 
             while (rs.next()){
                 products.add(new Product(rs.getInt("id"),
                                         rs.getString("name"),
                                         rs.getInt("price"),
-                                        rs.getString("category")));
+                                        rs.getString("category"),
+                                        rs.getString("image")));
             }
 
         } catch (SQLException e) {

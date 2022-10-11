@@ -6,12 +6,30 @@ public class Product
     private String name;
     private Integer price;
     private String category;
+    private String image;
 
-    public Product(Integer id, String productName, Integer price, String category) {
+    public Product(Integer id, String productName, Integer price, String category, String image) {
         this.id = id;
         this.name = productName;
         this.price = price;
         this.category = category;
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Integer getId() {
