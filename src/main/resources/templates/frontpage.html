@@ -28,6 +28,30 @@
 </head>
 <body>
 
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Varan tillagd i varukorgen!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="jumbotron">
     <div class="container text-center">
         <h1>Online Store</h1>
@@ -47,15 +71,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="#">Deals</a></li>
                 <li><a href="#">Deals</a></li>
                 <li><a href="#">Stores</a></li>
                 <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
             </ul>
         </div>
     </div>
@@ -89,13 +108,17 @@
 
 <div class="container">
     <div class="row">
-        <div th:each="product : ${products}">
+        <div class="productlisting" th:each="product : ${products}">
             <div class="col-sm-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading" th:text="${product.name}"></div>
                     <div class="panel-body"><img th:src="${product.image}" class="img-responsive"
                                                  style="width:100%" alt="Image"></div>
                     <div class="panel-footer" th:text="'Pris: ' + ${product.price} + ' kr'"></div>
+                    <a class="btn btn-primary stretched-link" onclick="location.href='/product';" style="cursor: pointer;">Mer info</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Köp
+                    </button>
                 </div>
             </div>
         </div>
