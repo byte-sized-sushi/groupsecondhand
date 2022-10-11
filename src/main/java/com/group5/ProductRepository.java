@@ -40,7 +40,7 @@ public class ProductRepository
     public Product getProduct(Integer id)
     {
         Product foundProduct = null;
-
+        //test
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT id, name, price, category, image FROM product WHERE id = " + id)) {
