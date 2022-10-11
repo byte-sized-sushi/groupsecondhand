@@ -37,6 +37,28 @@ public class ProductRepository
         return products;
     }
 
+    public Product getProduct(Integer id)
+    {
+        Product foundProduct = null;
+
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT id, name, price, category, image FROM product WHERE id = " + id)) {
+
+            if (rs.next()){
+                foundProduct = (new Product(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("price"),
+                        rs.getString("category"),
+                        rs.getString("image")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return foundProduct;
+    }
+
     // todo: metod för att hämta en product
 
     // todo: metod för att spara produkter
