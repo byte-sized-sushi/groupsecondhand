@@ -1,0 +1,41 @@
+package com.group5;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+@Repository
+public class ProductRepository
+{
+    @Autowired
+    private DataSource dataSource;
+
+    public List<Product> getProducts()
+    {
+        List<Product> products = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT id, name, price, category FROM product")) {
+
+            while (rs.next()){
+                products.add(new Product(rs.getInt("id"),
+                                        rs.getString("name"),
+                                        rs.getInt("price"),
+                                        rs.getString("category")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+    // todo: metod för att spara produkter
+}
