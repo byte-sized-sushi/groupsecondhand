@@ -61,7 +61,16 @@
   </div>
 </nav>
 
-
+<table class="itemlistingtable">
+  <tr class="itemlistingsmolheader">
+    <th>Produktnamn</th>
+    <th th:text="${product.name}"></th>
+  </tr>
+  <tr>
+    <th>Pris</th>
+    <th th:text="${product.price}"></th>
+  </tr>
+</table>
 
 <footer class="container-fluid text-center">
   <p>Online Store Copyright</p>
