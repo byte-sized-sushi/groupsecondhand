@@ -22,10 +22,4 @@ public class ProductController
 
         return "frontpage";
     }
-
-    @GetMapping("/products")
-    public List<Product> showProduct()
-    {
-        return repository.getProducts();
-    }
 }
