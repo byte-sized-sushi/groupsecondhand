@@ -1,0 +1,7 @@
+.btn-bd-primary {
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+}
+
+button[type=button]:hover{
+      background-color: #19cbe0;
+}
